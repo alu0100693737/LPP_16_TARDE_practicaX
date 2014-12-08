@@ -1,6 +1,6 @@
 module Prct10
     class Interfaz
-	attr_accessor :examen, :lista, :correctas, :incorrectas, :opcion_marcadas_usuario
+	attr_accessor :examen, :lista, :correctas, :incorrectas, :opcion_marcadas_usuario, :numpreg
 	def initialize(lista)
 	
 	  @examen = Prct10::Examen.new(lista)
@@ -11,23 +11,24 @@ module Prct10
 	  @incorrectas=0
 	end
 	
-	def calcular_nota(respuestas, usuario)
+	def calcular_nota(respuestas)
 	    aux = @examen.lista_enlazada.cabeza
-	    cont = 0
-	    @resp_usuario = []
-	    @resp_usuario = respuestas[usuario]
+	    @numpreg = 0
+	    #@resp_usuario = []
+	    @resp_usuario = respuestas
 	    while (aux != nil)
 		aux.valor.to_s
 		#puts "#{aux.valor.to_s}"
 		#puts "#{respuestas[cont]}"
 		#puts "*************************"
-		if (@resp_usuario[cont] == aux.valor.op_correcta)
+		if (@resp_usuario.valor == aux.valor.op_correcta)
 		    @correctas = @correctas+2
 		else
 		    @incorrectas=@incorrectas+2
 		end
 		aux= aux.siguiente
-		cont = cont +1
+		@resp_usuario = @resp_usuario.siguiente
+		@numpreg+=1
 	    end
 	    if (@correctas !=0 || @incorrectas !=0)
 		return true
