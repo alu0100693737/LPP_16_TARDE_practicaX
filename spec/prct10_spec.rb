@@ -318,7 +318,89 @@ describe Prct10 do
 	
   end
       end
-  
+
+	describe Prct10::Quiz do
+	   before :each do
+		  @title="cuestionario LPP 14/15"
+		  @cuestionario= Prct10::Quiz.new(title)
+		 	  
+		 @preg1=Prct10::EleccionSimple.new(:pregunta => "salida de : 
+					      class Xyz \n def pots\n
+					      @nice\n end\nend\n",:op_correcta => "nil",
+					      :op_incorrecta => ['#<Xyz:0x00000002bf0ed0>','0', "ninguna de las anteriores" ])
+							      
+	        @preg2=Prct10::EleccionSimple.new(
+					    :pregunta => "salida de :
+					    hash_raro ={ \n
+					    [1, 2, 3] => Object.new(), \n
+					    Hash.new => :toto
+					    }", :op_correcta => "Cierto", 
+					    :op_incorrecta => ['Falso'] )
+												      
+	        @preg3=Prct10::EleccionSimple.new(
+					    :pregunta => "salida de :
+					    class Array \n 
+					    def say_hi \n
+					    HEY! 
+					    end
+					    end \n
+					    p[1,, bob].say_hi", 
+					    :op_correcta => "Ninguna de las anteriores",
+					    :op_incorrecta => ['1', 'bob', 'HEY!'])
+								      
+	        @preg4=Prct10::EleccionSimple.new(
+					    :pregunta => "salida de :
+					    class Objeto \n
+					    end", :op_correcta => "Una instancia de la clase Class",
+					    :op_incorrecta => ['una constante', 'un objeto', 'ninguna de las anteriores'])
+								      
+		@preg5=Prct10::EleccionSimple.new(
+					    :pregunta => "es apropiado que una clase tablero herede de la clase juego? ",
+					    :op_correcta => "Falso", :op_incorrecta=> ['Cierto'])
+		
+		@cuestionario.recibiendo_datos{@preg1,@preg2,@preg3,@preg4,@preg5} 
+		
+		@cuestionario.exameninterfaz.opciones_marcadas_usuario.push("0")
+		@cuestionario.exameninterfaz.opciones_marcadas_usuario.push("Cierto")
+		@cuestionario.exameninterfaz.opciones_marcadas_usuario.push("Ninguna de las anteriores")
+		@cuestionario.exameninterfaz.opciones_marcadas_usuario.push("una constante")
+		@cuestionario.exameninterfaz.opciones_marcadas_usuario.push("Falso")
+		@cuestionario.exameninterfaz.examen.opcion_correcta.push("nil")
+		@cuestionario.exameninterfaz.examen.opcion_correcta.push("Cierto")
+		@cuestionario.exameninterfaz.examen.opcion_correcta.push("Ninguna de las anteriores")
+		@cuestionario.exameninterfaz.examen.opcion_correcta.push("Una instancia de la clase Class")
+		@cuestionario.exameninterfaz.examen.opcion_correcta.push("Falso")
+		  
+		  	  
+	   end
+	  context "mierdas varias"
+	     it "La clase examen te dice si estas aprobado" do
+		@cuestionario.exameninterfaz.calcular_nota(@cuestionario.exameninterfaz.opciones_marcadas_usuario)
+		expect(@exameninterfaz.mostrar_resultado)== (true)
+	      end
+	      
+	       
+	      #nota = 0
+	      it "La clase examen te dice si tienes 10" do
+		#@exameninterfaz.opcion_marcadas_usuario = ["2","3", "1", "@preg4.op_correcta", "Cierto"]
+		@cuestionario.exameninterfaz.calcular_nota(@cuestionario.exameninterfaz.examen.opcion_correcta)
+		expect(@cuestionario.exameninterfaz.mostrar_resultado).to eq (true)
+	      end
+	       it "La clase examen te dice si estas suspenso" do
+		 @cuestionario.exameninterfaz.opciones_marcadas_usuario.push("0")
+		@cuestionario.exameninterfaz.opciones_marcadas_usuario.push("falso")
+		@cuestionario.exameninterfaz.opciones_marcadas_usuario.push("bob")
+		@cuestionario.exameninterfaz.opciones_marcadas_usuario.push("una constante")
+		@cuestionario.exameninterfaz.opciones_marcadas_usuario.push("Cierto")
+		@cuestionario.exameninterfaz.calcular_nota(@cuestionario.exameninterfaz.opciones_marcadas_usuario)
+		expect(@cuestionario.exameninterfaz.mostrar_resultado)== (false)
+	      end
+	   
+	   
+	   
+	end
+	  
+	end
     
       
       

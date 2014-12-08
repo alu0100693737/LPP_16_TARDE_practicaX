@@ -7,7 +7,7 @@ module Prct10
 	#nodo = Struct.new(:valor, :antes,:siguiente )
 	@lista_enlazada=lista
 	#@opcion_marcada = []
-	@opcion_correcta = nil
+	@opcion_correcta =Prct10::Lista_enlazada.new
       end
 
 end

@@ -1,11 +1,11 @@
 module Prct10
   class Quiz
-    attr_accessor :title, :pregunta, :entrada_usuario
+    attr_accessor :title, :pregunta, :entrada_usuario, :exameninterfaz
     
     def initialize(a)
       @title=a
-      @lista_enlazada = new Prct10::Lista_enlazada.new
-      
+      @lista_enlazada = Prct10::Lista_enlazada.new
+      @exameninterfaz=nil
       @entrada_usuario = Prct10::Lista_enlazada.new
       
      end 
@@ -40,7 +40,7 @@ module Prct10
       
       #tener en cuentaaa en el spec
       @exameninterfaz.opciones_marcadas_usuario = @entrada_usuario
-      @exameninterfaz.examen.opcion_correcta = @entrada_usuario #inicializado examen completo
+      #@exameninterfaz.examen.opcion_correcta = @entrada_usuario #inicializado examen completo
       
     end
     
