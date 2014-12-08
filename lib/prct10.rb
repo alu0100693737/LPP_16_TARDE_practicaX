@@ -1,5 +1,5 @@
 require "prct10/version"
-
-module Prct10
-  # Your code goes here...
-end
+require "prct10/preguntas"
+require "prct10/lista_doblemente_enlazada"
+require "prct10/examen"
+require "prct10/interfaz"

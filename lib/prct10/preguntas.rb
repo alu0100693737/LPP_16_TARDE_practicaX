@@ -1,5 +1,5 @@
 require 'pry'
-module Preguntas
+module Prct10
   class Preg
   attr_accessor :pregunta
     
