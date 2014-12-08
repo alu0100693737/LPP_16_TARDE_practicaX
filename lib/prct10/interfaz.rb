@@ -5,7 +5,7 @@ module Prct10
 	
 	  @examen = Prct10::Examen.new(lista)
 	  
-	  @opcion_marcadas_usuario = []
+	  @opcion_marcadas_usuario= nil
 	  
 	  @correctas=0
 	  @incorrectas=0
