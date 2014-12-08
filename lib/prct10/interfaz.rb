@@ -3,7 +3,7 @@ module Prct10
 	attr_accessor :examen, :lista, :correctas, :incorrectas, :opcion_marcadas_usuario
 	def initialize(lista)
 	
-	  @examen = Prct06::Examen.new(lista)
+	  @examen = Prct10::Examen.new(lista)
 	  
 	  @opcion_marcadas_usuario = []
 	  

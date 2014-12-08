@@ -1,4 +1,4 @@
-require 'pry'
+#require 'pry'
 module Prct10
   class Preg
   attr_accessor :pregunta

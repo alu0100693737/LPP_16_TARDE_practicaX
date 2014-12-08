@@ -49,7 +49,7 @@ module Prct10
     end
     
      def reverse
-	@lista_reverse = Prct06::Lista_enlazada.new
+	@lista_reverse = Prct10::Lista_enlazada.new
 	self.each_with_index do |n|
 	   yield @lista_reverse.push(n)
 	  
